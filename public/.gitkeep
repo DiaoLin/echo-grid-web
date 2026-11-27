@@ -1,0 +1,4 @@
+# 前端静态文件目录
+#
+# 网页看板的 index.html、css/、js/、assets/ 直接放在本目录下。
+# 后端会自动托管本目录，并把未知的 GET 路径回退到 index.html。

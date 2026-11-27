@@ -1,0 +1,48 @@
+{
+  "name": "echo-grid-web",
+  "version": "0.1.0",
+  "private": true,
+  "description": "EchoGrid 校园噪声地图后端（Node.js + PostgreSQL）",
+  "type": "module",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./app": "./src/app.js",
+    "./config": "./src/config.js",
+    "./db": "./src/db.js"
+  },
+  "bin": {
+    "echo-grid-server": "src/server.js",
+    "echo-grid-migrate": "scripts/migrate.js"
+  },
+  "files": [
+    "src",
+    "migrations",
+    "scripts",
+    "public",
+    ".env.example",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "db:migrate": "node scripts/migrate.js",
+    "test": "node --test"
+  },
+  "keywords": [
+    "echo-grid",
+    "noise-map",
+    "express",
+    "postgresql"
+  ],
+  "license": "UNLICENSED",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.10",
+    "express": "^5.3.0",
+    "pg": "^8.23.1"
+  }
+}
