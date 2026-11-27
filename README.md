@@ -120,7 +120,7 @@ npm pack --dry-run
 
 | 变量 | 默认值 | 说明 |
 |---|---|---|
-| `PORT` | `3000` | 服务端口 |
+| `PORT` | `3000` | 服务监听端口，直接读取 `process.env.PORT` |
 | `DATABASE_URL` | 无（必须配置） | 外部 PostgreSQL 连接串；也可使用标准 `PGHOST` / `PGPORT` / `PGDATABASE` / `PGUSER` / `PGPASSWORD` |
 | `PGSSL` | `false` | 是否启用数据库 SSL |
 | `INGEST_TOKEN` | 空 | 设置后，写接口需要 `Authorization: Bearer <token>` 或 `X-API-Key: <token>` |

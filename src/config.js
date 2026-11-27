@@ -46,7 +46,6 @@ export function parseTzOffset(raw) {
 }
 
 export const config = {
-  port: readInt('PORT', 3000, { min: 1, max: 65535 }),
   databaseUrl: process.env.DATABASE_URL?.trim() || '',
   dbSsl: readBool('PGSSL', false),
   ingestToken: process.env.INGEST_TOKEN?.trim() || '',

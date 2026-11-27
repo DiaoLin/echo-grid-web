@@ -1,11 +1,21 @@
 #!/usr/bin/env node
 import { createApp } from './app.js';
-import { assertDatabaseConfigured, config } from './config.js';
+import { assertDatabaseConfigured } from './config.js';
 import { pool, query } from './db.js';
 
 const app = createApp();
 
+// 监听平台注入的 PORT 变量；本地未设置时回退到 3000
+const port = Number(process.env.PORT || 3000);
+
 async function main() {
+  if (!Number.isInteger(port) || port < 1 || port > 65535) {
+    console.error(`PORT 无效：${process.env.PORT ?? ''}，应为 1—65535 的整数`);
+    process.exitCode = 1;
+    await pool.end();
+    return;
+  }
+
   try {
     assertDatabaseConfigured();
   } catch (err) {
@@ -25,9 +35,9 @@ async function main() {
     return;
   }
 
-  const server = app.listen(config.port, () => {
-    console.log(`EchoGrid 后端已启动：http://localhost:${config.port}`);
-    console.log(`API 说明：http://localhost:${config.port}/api`);
+  const server = app.listen(port, () => {
+    console.log(`EchoGrid 后端已启动：http://localhost:${port}`);
+    console.log(`API 说明：http://localhost:${port}/api`);
   });
 
   let shuttingDown = false;
